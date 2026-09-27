@@ -1,0 +1,174 @@
+{
+  "works": [
+    {
+      "id": "W-01",
+      "title": "青铜立像（示例）",
+      "artistId": "A-01",
+      "weightKg": 420,
+      "supportType": "freestanding",
+      "originalCondition": {
+        "summary": "表面包浆完整，底座四角有旧磨痕",
+        "baselineReport": "CR-W01-000",
+        "photographedAt": "2026-09-10"
+      },
+      "artistRights": { "touchPolicy": "allow-with-approval", "rightsHolderCode": "RH-01" },
+      "loanCondition": "直立运输，倾斜不超过15度；陈列环境相对湿度45%-55%",
+      "components": [
+        { "id": "W-01-C1", "label": "像身" },
+        { "id": "W-01-C2", "label": "底座固定盘" }
+      ]
+    },
+    {
+      "id": "W-02",
+      "title": "石质浮雕（示例）",
+      "artistId": "A-02",
+      "weightKg": 260,
+      "supportType": "wall-mounted",
+      "originalCondition": {
+        "summary": "右上角有旧修补痕迹，边缘轻微风化",
+        "baselineReport": "CR-W02-000",
+        "photographedAt": "2026-09-10"
+      },
+      "artistRights": { "touchPolicy": "no-touch", "rightsHolderCode": "RH-02" },
+      "loanCondition": "仅可墙面展示，禁止平放",
+      "components": [
+        { "id": "W-02-C1", "label": "浮雕主体" },
+        { "id": "W-02-C2", "label": "墙面挂具" }
+      ]
+    },
+    {
+      "id": "W-03",
+      "title": "陶瓷组（示例）",
+      "artistId": "A-03",
+      "weightKg": 55,
+      "supportType": "pedestal",
+      "originalCondition": {
+        "summary": "三件完好，釉面无划伤",
+        "baselineReport": "CR-W03-000",
+        "photographedAt": "2026-09-11"
+      },
+      "artistRights": { "touchPolicy": "allow-with-approval", "rightsHolderCode": "RH-03" },
+      "loanCondition": "防震运输，温度不低于10摄氏度",
+      "components": [
+        { "id": "W-03-C1", "label": "陶瓶甲" },
+        { "id": "W-03-C2", "label": "陶瓶乙" },
+        { "id": "W-03-C3", "label": "陶瓶丙" }
+      ]
+    },
+    {
+      "id": "W-04",
+      "title": "悬挂构成（示例）",
+      "artistId": "A-04",
+      "weightKg": 80,
+      "supportType": "suspended",
+      "originalCondition": {
+        "summary": "钢索与吊点检测合格",
+        "baselineReport": "CR-W04-000",
+        "photographedAt": "2026-09-11"
+      },
+      "artistRights": { "touchPolicy": "allow-with-approval", "rightsHolderCode": "RH-04" },
+      "loanCondition": "悬挂吊点须承重五倍以上",
+      "components": [
+        { "id": "W-04-C1", "label": "悬挂主体" },
+        { "id": "W-04-C2", "label": "专用钢索组" }
+      ]
+    }
+  ],
+  "crates": [
+    { "id": "C-01", "workId": "W-01", "componentIds": ["W-01-C1", "W-01-C2"], "weightKg": 480 },
+    { "id": "C-02", "workId": "W-02", "componentIds": ["W-02-C1", "W-02-C2"], "weightKg": 310 },
+    { "id": "C-03", "workId": "W-03", "componentIds": ["W-03-C1", "W-03-C2", "W-03-C3"], "weightKg": 95 },
+    { "id": "C-04", "workId": "W-04", "componentIds": ["W-04-C1", "W-04-C2"], "weightKg": 120 }
+  ],
+  "vehicles": [
+    { "id": "V-01", "name": "气垫车一号", "capacityKg": 1200 }
+  ],
+  "legs": [
+    { "id": "L-01", "vehicleId": "V-01", "fromVenueId": "DEPOT", "toVenueId": "M-A", "departsAt": "2026-09-30T08:00:00Z", "arrivesAt": "2026-10-01T09:00:00Z" }
+  ],
+  "loads": [
+    { "id": "LD-01", "legId": "L-01", "crateIds": ["C-01", "C-02", "C-03", "C-04"] }
+  ],
+  "venues": [
+    {
+      "id": "DEPOT",
+      "name": "出库库房（示例）",
+      "sessionCapacity": 1,
+      "positions": []
+    },
+    {
+      "id": "M-A",
+      "name": "甲市美术馆（示例）",
+      "installReadyBy": "2026-10-02T18:00:00Z",
+      "sessionCapacity": 12,
+      "assistiveAvailable": ["手语讲解", "盲文图录", "轮椅观展位", "陪护席"],
+      "positions": [
+        { "id": "M-A-F1", "label": "一层中庭地面位", "maxLoadKg": 600, "allowedSupport": ["freestanding"] },
+        { "id": "M-A-W1", "label": "一层承重墙位", "maxLoadKg": 400, "allowedSupport": ["wall-mounted"] },
+        { "id": "M-A-P1", "label": "三层展座", "maxLoadKg": 120, "allowedSupport": ["pedestal"] },
+        { "id": "M-A-R1", "label": "三层悬吊点", "maxLoadKg": 500, "allowedSupport": ["suspended"] }
+      ]
+    },
+    {
+      "id": "M-B",
+      "name": "乙市美术馆（示例）",
+      "installReadyBy": "2026-11-02T18:00:00Z",
+      "sessionCapacity": 8,
+      "assistiveAvailable": ["盲文图录", "轮椅观展位"],
+      "positions": [
+        { "id": "M-B-F1", "label": "二层地面位", "maxLoadKg": 500, "allowedSupport": ["freestanding"] },
+        { "id": "M-B-P1", "label": "二层展座", "maxLoadKg": 100, "allowedSupport": ["pedestal"] }
+      ]
+    }
+  ],
+  "installPlan": [
+    { "workId": "W-02", "venueId": "M-A", "positionId": "M-A-W1", "after": [] },
+    { "workId": "W-04", "venueId": "M-A", "positionId": "M-A-R1", "after": [] },
+    { "workId": "W-01", "venueId": "M-A", "positionId": "M-A-F1", "after": ["W-02"] },
+    { "workId": "W-03", "venueId": "M-A", "positionId": "M-A-P1", "after": ["W-01"] }
+  ],
+  "touchAuthorizations": [
+    {
+      "workId": "W-01",
+      "venueId": "M-A",
+      "status": "granted",
+      "artistApprover": "作者权利方代码 RH-01",
+      "venueApprover": "甲馆典藏安全负责人（岗位）",
+      "validFrom": "2026-10-03T00:00:00Z",
+      "validUntil": "2026-10-31T23:59:59Z",
+      "cleaningIntervalHours": 2,
+      "touchGuidance": "仅可触摸底座以上设定区域，佩戴馆方手套"
+    },
+    {
+      "workId": "W-03",
+      "venueId": "M-A",
+      "status": "granted",
+      "artistApprover": "作者权利方代码 RH-03",
+      "venueApprover": "甲馆典藏安全负责人（岗位）",
+      "validFrom": "2026-10-03T00:00:00Z",
+      "validUntil": "2026-10-31T23:59:59Z",
+      "cleaningIntervalHours": 1,
+      "touchGuidance": "轻触瓶腹，禁止抓握瓶口"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "B-01",
+      "venueId": "M-A",
+      "scheduledAt": "2026-10-05T10:00:00Z",
+      "works": ["W-01", "W-03"],
+      "visitors": 8,
+      "assistiveNeeds": ["盲文图录"],
+      "assistiveProvided": []
+    },
+    {
+      "id": "B-02",
+      "venueId": "M-A",
+      "scheduledAt": "2026-10-12T14:00:00Z",
+      "works": ["W-01"],
+      "visitors": 4,
+      "assistiveNeeds": ["手语讲解"],
+      "assistiveProvided": []
+    }
+  ]
+}
