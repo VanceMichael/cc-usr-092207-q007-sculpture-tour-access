@@ -8,42 +8,501 @@
     "sample_id",
     "actors",
     "facts",
-    "constraints"
+    "constraints",
+    "data"
   ],
+  "additionalProperties": false,
   "properties": {
-    "domain": {
-      "type": "string",
-      "minLength": 1
-    },
-    "version": {
-      "type": "integer",
-      "minimum": 1
-    },
-    "sample_id": {
-      "type": "string",
-      "minLength": 1
-    },
+    "domain": { "type": "string", "minLength": 1 },
+    "version": { "type": "integer", "minimum": 2 },
+    "sample_id": { "type": "string", "minLength": 1 },
     "actors": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" }
     },
     "facts": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" }
     },
     "constraints": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
+      "items": { "type": "string" }
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "artists",
+        "artworks",
+        "venues",
+        "positions",
+        "install_dependencies",
+        "crates",
+        "vehicles",
+        "shipments",
+        "condition_reports",
+        "handovers",
+        "inspections",
+        "authorizations",
+        "sessions",
+        "bookings",
+        "events"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "artists": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "code"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "code": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "artworks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title",
+              "artist_id",
+              "unit",
+              "material",
+              "weight_kg",
+              "support_method",
+              "footprint_m2",
+              "loan_conditions",
+              "status",
+              "components"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "artist_id": { "type": "string" },
+              "unit": { "type": "integer", "enum": [1, 2, 3] },
+              "material": { "type": "string" },
+              "weight_kg": { "type": "number", "exclusiveMinimum": 0 },
+              "support_method": {
+                "type": "string",
+                "enum": ["地脚固定", "独立落地", "台座展陈", "悬挂吊装"]
+              },
+              "footprint_m2": { "type": "number", "exclusiveMinimum": 0 },
+              "label_text": { "type": "string" },
+              "loan_conditions": { "type": "array", "items": { "type": "string" } },
+              "status": {
+                "type": "string",
+                "enum": ["ok", "repair_hold", "partial"]
+              },
+              "components": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "name", "weight_kg", "required", "present"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "weight_kg": { "type": "number", "minimum": 0 },
+                    "required": { "type": "boolean" },
+                    "present": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "venues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "galleries"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "status": {
+                "type": "string",
+                "enum": ["active", "withdrawn"]
+              },
+              "galleries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "load_limit_kg_m2"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": { "type": "string" },
+                    "load_limit_kg_m2": { "type": "number", "exclusiveMinimum": 0 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "positions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "venue_id", "gallery", "floor_load_limit_kg_m2", "features", "footprint_m2", "artwork_id"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "venue_id": { "type": "string" },
+              "gallery": { "type": "string" },
+              "floor_load_limit_kg_m2": { "type": "number", "exclusiveMinimum": 0 },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["anchor", "power", "rigging", "plinth"]
+                }
+              },
+              "footprint_m2": { "type": "number", "exclusiveMinimum": 0 },
+              "artwork_id": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "install_dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["artwork_id", "requires"],
+            "additionalProperties": false,
+            "properties": {
+              "artwork_id": { "type": "string" },
+              "requires": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["type", "detail"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["anchor", "power", "rigging", "plinth"]
+                    },
+                    "detail": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "crates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "tare_kg", "max_load_kg", "contents"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "tare_kg": { "type": "number", "minimum": 0 },
+              "max_load_kg": { "type": "number", "exclusiveMinimum": 0 },
+              "contents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["kind", "ref"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "kind": { "type": "string", "enum": ["artwork", "component"] },
+                    "ref": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "vehicles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "payload_kg"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "payload_kg": { "type": "number", "exclusiveMinimum": 0 }
+            }
+          }
+        },
+        "shipments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "vehicle_id",
+              "from",
+              "to",
+              "planned_departure",
+              "planned_arrival",
+              "crate_ids",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "vehicle_id": { "type": "string" },
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "planned_departure": { "type": "string" },
+              "planned_arrival": { "type": "string" },
+              "actual_arrival": { "type": ["string", "null"] },
+              "crate_ids": { "type": "array", "items": { "type": "string" } },
+              "requires_replan": { "type": "boolean" },
+              "status": {
+                "type": "string",
+                "enum": ["scheduled", "in_transit", "delayed", "completed"]
+              }
+            }
+          }
+        },
+        "condition_reports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "artwork_id", "stage", "at", "reporter_role", "findings", "resolved"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "artwork_id": { "type": "string" },
+              "stage": {
+                "type": "string",
+                "enum": ["baseline", "packed", "unpacked", "installed", "deinstalled"]
+              },
+              "at": { "type": "string" },
+              "reporter_role": { "type": "string" },
+              "findings": { "type": "array", "items": { "type": "string" } },
+              "resolved": { "type": "boolean" }
+            }
+          }
+        },
+        "handovers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "at",
+              "from_party",
+              "to_party",
+              "crate_ids",
+              "report_ids",
+              "inspection_ids",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "shipment_id": { "type": "string" },
+              "at": { "type": "string" },
+              "rescheduled_at": { "type": ["string", "null"] },
+              "from_party": { "type": "string" },
+              "to_party": { "type": "string" },
+              "crate_ids": { "type": "array", "items": { "type": "string" } },
+              "report_ids": { "type": "array", "items": { "type": "string" } },
+              "inspection_ids": { "type": "array", "items": { "type": "string" } },
+              "status": {
+                "type": "string",
+                "enum": ["done", "scheduled"]
+              }
+            }
+          }
+        },
+        "inspections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "at", "inspector_role", "scope", "results", "passed"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "at": { "type": "string" },
+              "inspector_role": { "type": "string" },
+              "scope": { "type": "string" },
+              "results": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["ref", "result"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "ref": { "type": "string" },
+                    "result": { "type": "string" }
+                  }
+                }
+              },
+              "passed": { "type": "boolean" }
+            }
+          }
+        },
+        "authorizations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "artwork_id",
+              "artist_consent",
+              "venue_consents",
+              "cleaning_interval_min",
+              "max_group_size",
+              "supervision_required",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "artwork_id": { "type": "string" },
+              "artist_consent": {
+                "type": ["object", "null"],
+                "required": ["by", "at", "scope_zones"],
+                "additionalProperties": false,
+                "properties": {
+                  "by": { "type": "string" },
+                  "at": { "type": "string" },
+                  "scope_zones": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "venue_consents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["venue_id", "at", "status"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "venue_id": { "type": "string" },
+                    "by": { "type": "string" },
+                    "at": { "type": "string" },
+                    "status": {
+                      "type": "string",
+                      "enum": ["active", "pending", "refused"]
+                    }
+                  }
+                }
+              },
+              "cleaning_interval_min": { "type": "integer", "minimum": 0 },
+              "max_group_size": { "type": "integer", "exclusiveMinimum": 0 },
+              "supervision_required": { "type": "boolean" },
+              "status": {
+                "type": "string",
+                "enum": ["active", "revoked"]
+              },
+              "revoked_event_id": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "sessions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "venue_id",
+              "starts_at",
+              "status",
+              "planned_artwork_ids",
+              "supports",
+              "capacity",
+              "held_groups",
+              "booking_ids"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "venue_id": { "type": "string" },
+              "starts_at": { "type": "string" },
+              "status": {
+                "type": "string",
+                "enum": ["scheduled", "held", "postponed", "venue_pending"]
+              },
+              "planned_artwork_ids": { "type": "array", "items": { "type": "string" } },
+              "supports": { "type": "array", "items": { "type": "string" } },
+              "capacity": { "type": "integer", "exclusiveMinimum": 0 },
+              "held_groups": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["at", "visitors", "cleaned_at", "supervision"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "at": { "type": "string" },
+                    "visitors": { "type": "integer", "minimum": 0 },
+                    "cleaned_at": { "type": "string" },
+                    "supervision": { "type": "boolean" }
+                  }
+                }
+              },
+              "booking_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "bookings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "session_id", "visitor_kind", "companions", "needs", "status"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "session_id": { "type": "string" },
+              "visitor_kind": { "type": "string" },
+              "companions": { "type": "integer", "minimum": 0 },
+              "needs": { "type": "array", "items": { "type": "string" } },
+              "status": {
+                "type": "string",
+                "enum": ["reserved", "fulfilled", "cancelled"]
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "at", "summary", "cascade"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "repair",
+                  "missing_component",
+                  "route_delay",
+                  "venue_change",
+                  "authorization_withdrawn",
+                  "support_change"
+                ]
+              },
+              "at": { "type": "string" },
+              "ref": { "type": "string" },
+              "summary": { "type": "string" },
+              "payload": { "type": "object" },
+              "cascade": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["action", "ref"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": { "type": "string" },
+                    "ref": { "type": "string" },
+                    "detail": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-  },
-  "additionalProperties": false
+  }
 }

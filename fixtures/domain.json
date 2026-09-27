@@ -1,6 +1,6 @@
 {
   "domain": "sculpture-tour-access",
-  "version": 1,
+  "version": 2,
   "sample_id": "record-007",
   "actors": [
     "巡展策展团队",
@@ -17,6 +17,468 @@
     "作品组件与状况",
     "巡展装载排程",
     "展厅安装依赖",
-    "无障碍活动授权"
-  ]
+    "无障碍活动授权",
+    "触摸开放须作者与馆方双重确认，普通展签不构成许可",
+    "每次交接与检查均须留痕且记录不可删除",
+    "承运安装与公教人员仅可见职责内资料",
+    "修复、缺件、延误、换场、授权撤回、辅助需求变化须联动后续安排"
+  ],
+  "data": {
+    "artists": [
+      { "id": "A-01", "code": "ARTIST-CODE-01" },
+      { "id": "A-02", "code": "ARTIST-CODE-02" },
+      { "id": "A-03", "code": "ARTIST-CODE-03" },
+      { "id": "A-04", "code": "ARTIST-CODE-04" },
+      { "id": "A-05", "code": "ARTIST-CODE-05" },
+      { "id": "A-06", "code": "ARTIST-CODE-06" }
+    ],
+    "artworks": [
+      {
+        "id": "W-001",
+        "title": "石之一",
+        "artist_id": "A-01",
+        "unit": 1,
+        "material": "花岗岩",
+        "weight_kg": 480,
+        "support_method": "地脚固定",
+        "footprint_m2": 1.2,
+        "label_text": "请勿触摸",
+        "loan_conditions": ["温度 18-22℃", "湿度 45-55%", "地脚固定须由出借方确认点位"],
+        "status": "ok",
+        "components": [
+          { "id": "C-001-1", "name": "主体", "weight_kg": 360, "required": true, "present": true },
+          { "id": "C-001-2", "name": "底座", "weight_kg": 120, "required": true, "present": true }
+        ]
+      },
+      {
+        "id": "W-002",
+        "title": "风的形状",
+        "artist_id": "A-02",
+        "unit": 2,
+        "material": "锻铜",
+        "weight_kg": 95,
+        "support_method": "独立落地",
+        "footprint_m2": 0.6,
+        "label_text": "欢迎在工作人员引导下触摸（已撤回）",
+        "loan_conditions": ["避免强光直射"],
+        "status": "ok",
+        "components": [
+          { "id": "C-002-1", "name": "整件", "weight_kg": 95, "required": true, "present": true }
+        ]
+      },
+      {
+        "id": "W-003",
+        "title": "微光装置",
+        "artist_id": "A-03",
+        "unit": 2,
+        "material": "综合材料（含灯具）",
+        "weight_kg": 60,
+        "support_method": "台座展陈",
+        "footprint_m2": 0.8,
+        "label_text": "请勿触摸",
+        "loan_conditions": ["需稳定供电", "灯具表面高温"],
+        "status": "ok",
+        "components": [
+          { "id": "C-003-1", "name": "灯体", "weight_kg": 42, "required": true, "present": true },
+          { "id": "C-003-2", "name": "台座罩", "weight_kg": 18, "required": true, "present": true }
+        ]
+      },
+      {
+        "id": "W-004",
+        "title": "悬",
+        "artist_id": "A-04",
+        "unit": 3,
+        "material": "木与钢索",
+        "weight_kg": 140,
+        "support_method": "悬挂吊装",
+        "footprint_m2": 0.5,
+        "label_text": "修复中，暂停开放",
+        "loan_conditions": ["仅可悬挂于经检测的吊点"],
+        "status": "repair_hold",
+        "components": [
+          { "id": "C-004-1", "name": "悬挂主体", "weight_kg": 110, "required": true, "present": true },
+          { "id": "C-004-2", "name": "钢索组件", "weight_kg": 30, "required": true, "present": true }
+        ]
+      },
+      {
+        "id": "W-005",
+        "title": "群像组",
+        "artist_id": "A-05",
+        "unit": 3,
+        "material": "树脂",
+        "weight_kg": 200,
+        "support_method": "台座展陈",
+        "footprint_m2": 1.6,
+        "label_text": "请勿触摸",
+        "loan_conditions": ["组像须完整展出", "缺失必备组件不得布展"],
+        "status": "partial",
+        "components": [
+          { "id": "C-005-1", "name": "主像", "weight_kg": 170, "required": true, "present": true },
+          { "id": "C-005-2", "name": "侧像", "weight_kg": 30, "required": true, "present": false }
+        ]
+      },
+      {
+        "id": "W-006",
+        "title": "岸",
+        "artist_id": "A-06",
+        "unit": 1,
+        "material": "耐候钢",
+        "weight_kg": 260,
+        "support_method": "地脚固定",
+        "footprint_m2": 0.8,
+        "label_text": "请勿触摸",
+        "loan_conditions": ["户外或半户外空间", "地脚锚固"],
+        "status": "ok",
+        "components": [
+          { "id": "C-006-1", "name": "整件", "weight_kg": 260, "required": true, "present": true }
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "id": "V1",
+        "name": "市美术馆（示例）",
+        "status": "active",
+        "galleries": [
+          { "id": "G1", "load_limit_kg_m2": 500 },
+          { "id": "G2", "load_limit_kg_m2": 300 }
+        ]
+      },
+      {
+        "id": "V2",
+        "name": "滨港美术馆（示例）",
+        "status": "active",
+        "galleries": [
+          { "id": "G1", "load_limit_kg_m2": 350 }
+        ]
+      },
+      {
+        "id": "V3",
+        "name": "西区艺术空间（示例，已退出巡展）",
+        "status": "withdrawn",
+        "galleries": [
+          { "id": "G1", "load_limit_kg_m2": 250 }
+        ]
+      },
+      {
+        "id": "V4",
+        "name": "东岸当代馆（示例，替补场馆）",
+        "status": "active",
+        "galleries": [
+          { "id": "G1", "load_limit_kg_m2": 600 },
+          { "id": "G2", "load_limit_kg_m2": 400 }
+        ]
+      }
+    ],
+    "positions": [
+      { "id": "P-101", "venue_id": "V1", "gallery": "G1", "floor_load_limit_kg_m2": 500, "features": ["anchor"], "footprint_m2": 2, "artwork_id": "W-001" },
+      { "id": "P-102", "venue_id": "V1", "gallery": "G2", "floor_load_limit_kg_m2": 300, "features": [], "footprint_m2": 1, "artwork_id": "W-002" },
+      { "id": "P-103", "venue_id": "V1", "gallery": "G1", "floor_load_limit_kg_m2": 500, "features": ["power", "plinth"], "footprint_m2": 1.5, "artwork_id": "W-003" },
+      { "id": "P-104", "venue_id": "V2", "gallery": "G1", "floor_load_limit_kg_m2": 350, "features": ["rigging"], "footprint_m2": 1, "artwork_id": null },
+      { "id": "P-105", "venue_id": "V2", "gallery": "G1", "floor_load_limit_kg_m2": 350, "features": ["anchor", "plinth"], "footprint_m2": 2, "artwork_id": null },
+      { "id": "P-201", "venue_id": "V3", "gallery": "G1", "floor_load_limit_kg_m2": 250, "features": ["anchor"], "footprint_m2": 1.2, "artwork_id": null },
+      { "id": "P-301", "venue_id": "V4", "gallery": "G1", "floor_load_limit_kg_m2": 600, "features": ["anchor"], "footprint_m2": 2, "artwork_id": "W-006" },
+      { "id": "P-302", "venue_id": "V4", "gallery": "G2", "floor_load_limit_kg_m2": 400, "features": ["rigging"], "footprint_m2": 1, "artwork_id": null }
+    ],
+    "install_dependencies": [
+      { "artwork_id": "W-001", "requires": [{ "type": "anchor", "detail": "底座四点地脚锚固" }] },
+      { "artwork_id": "W-003", "requires": [
+        { "type": "power", "detail": "台座内 220V 供电" },
+        { "type": "plinth", "detail": "防烫隔离台座" }
+      ]},
+      { "artwork_id": "W-004", "requires": [{ "type": "rigging", "detail": "双吊点，单点承重不低于 100kg" }] },
+      { "artwork_id": "W-005", "requires": [{ "type": "plinth", "detail": "3m 长条台座" }] },
+      { "artwork_id": "W-006", "requires": [{ "type": "anchor", "detail": "底部两点锚固" }] }
+    ],
+    "crates": [
+      { "id": "K1", "tare_kg": 60, "max_load_kg": 500, "contents": [{ "kind": "artwork", "ref": "W-001" }] },
+      { "id": "K2", "tare_kg": 40, "max_load_kg": 200, "contents": [
+        { "kind": "artwork", "ref": "W-002" },
+        { "kind": "artwork", "ref": "W-003" }
+      ]},
+      { "id": "K3", "tare_kg": 50, "max_load_kg": 250, "contents": [{ "kind": "artwork", "ref": "W-004" }] },
+      { "id": "K4", "tare_kg": 30, "max_load_kg": 300, "contents": [{ "kind": "artwork", "ref": "W-005" }] },
+      { "id": "K5", "tare_kg": 30, "max_load_kg": 300, "contents": [{ "kind": "artwork", "ref": "W-006" }] }
+    ],
+    "vehicles": [
+      { "id": "TR1", "payload_kg": 800 },
+      { "id": "TR2", "payload_kg": 600 }
+    ],
+    "shipments": [
+      {
+        "id": "S1",
+        "vehicle_id": "TR1",
+        "from": "出借方库房（示例）",
+        "to": "V1",
+        "planned_departure": "2026-04-01T08:00",
+        "planned_arrival": "2026-04-01T16:00",
+        "actual_arrival": "2026-04-01T15:40",
+        "crate_ids": ["K1", "K2"],
+        "requires_replan": false,
+        "status": "completed"
+      },
+      {
+        "id": "S2",
+        "vehicle_id": "TR2",
+        "from": "V1",
+        "to": "V2",
+        "planned_departure": "2026-05-10T08:00",
+        "planned_arrival": "2026-05-10T15:00",
+        "actual_arrival": null,
+        "crate_ids": ["K3", "K4"],
+        "requires_replan": true,
+        "status": "delayed"
+      },
+      {
+        "id": "S3",
+        "vehicle_id": "TR1",
+        "from": "出借方库房（示例）",
+        "to": "V4",
+        "planned_departure": "2026-06-01T08:00",
+        "planned_arrival": "2026-06-01T17:00",
+        "actual_arrival": null,
+        "crate_ids": ["K5"],
+        "requires_replan": false,
+        "status": "scheduled"
+      }
+    ],
+    "condition_reports": [
+      { "id": "CR-001", "artwork_id": "W-001", "stage": "baseline", "at": "2026-03-28T10:00", "reporter_role": "作品出借方", "findings": ["原状完好"], "resolved": true },
+      { "id": "CR-002", "artwork_id": "W-001", "stage": "packed", "at": "2026-04-01T07:30", "reporter_role": "艺术品承运安装人员", "findings": ["装箱固定符合要求"], "resolved": true },
+      { "id": "CR-003", "artwork_id": "W-001", "stage": "unpacked", "at": "2026-04-01T17:00", "reporter_role": "艺术品承运安装人员", "findings": ["运输无新损伤"], "resolved": true },
+      { "id": "CR-004", "artwork_id": "W-001", "stage": "installed", "at": "2026-04-02T11:00", "reporter_role": "巡展策展团队", "findings": ["地脚锚固完成，状况稳定"], "resolved": true },
+      { "id": "CR-005", "artwork_id": "W-004", "stage": "unpacked", "at": "2026-05-10T18:30", "reporter_role": "艺术品承运安装人员", "findings": ["侧面发现裂纹，须修复后方可悬挂"], "resolved": false },
+      { "id": "CR-006", "artwork_id": "W-005", "stage": "unpacked", "at": "2026-05-10T18:40", "reporter_role": "艺术品承运安装人员", "findings": ["缺必备组件侧像 C-005-2"], "resolved": false },
+      { "id": "CR-007", "artwork_id": "W-006", "stage": "baseline", "at": "2026-05-25T09:00", "reporter_role": "作品出借方", "findings": ["原状完好"], "resolved": true }
+    ],
+    "handovers": [
+      {
+        "id": "H1",
+        "shipment_id": "S1",
+        "at": "2026-04-01T16:30",
+        "rescheduled_at": null,
+        "from_party": "艺术品承运安装人员",
+        "to_party": "V1 馆方",
+        "crate_ids": ["K1", "K2"],
+        "report_ids": ["CR-002", "CR-003"],
+        "inspection_ids": ["I1", "I2"],
+        "status": "done"
+      },
+      {
+        "id": "H2",
+        "shipment_id": "S2",
+        "at": "2026-05-10T16:00",
+        "rescheduled_at": "2026-05-12T10:00",
+        "from_party": "艺术品承运安装人员",
+        "to_party": "V2 馆方",
+        "crate_ids": ["K3", "K4"],
+        "report_ids": ["CR-005", "CR-006"],
+        "inspection_ids": ["I3"],
+        "status": "scheduled"
+      },
+      {
+        "id": "H3",
+        "shipment_id": "S3",
+        "at": "2026-05-30T10:00",
+        "rescheduled_at": "2026-06-01T17:30",
+        "from_party": "艺术品承运安装人员",
+        "to_party": "V4 馆方",
+        "crate_ids": ["K5"],
+        "report_ids": ["CR-007"],
+        "inspection_ids": [],
+        "status": "scheduled"
+      }
+    ],
+    "inspections": [
+      { "id": "I1", "at": "2026-04-01T07:40", "inspector_role": "艺术品承运安装人员", "scope": "K1/K2 装箱检查", "results": [
+        { "ref": "K1", "result": "衬垫与固定合格" },
+        { "ref": "K2", "result": "衬垫与固定合格" }
+      ], "passed": true },
+      { "id": "I2", "at": "2026-04-01T16:50", "inspector_role": "V1 馆方", "scope": "到场外包装核验", "results": [
+        { "ref": "K1", "result": "外包装无破损" },
+        { "ref": "K2", "result": "外包装无破损" }
+      ], "passed": true },
+      { "id": "I3", "at": "2026-05-10T17:30", "inspector_role": "V2 馆方", "scope": "G1 吊点检测", "results": [
+        { "ref": "P-104", "result": "东侧吊点承重存疑，未通过" }
+      ], "passed": false }
+    ],
+    "authorizations": [
+      {
+        "id": "AU-001",
+        "artwork_id": "W-001",
+        "artist_consent": { "by": "A-01", "at": "2026-03-20T10:00", "scope_zones": ["整体表面"] },
+        "venue_consents": [
+          { "venue_id": "V1", "by": "V1 馆方", "at": "2026-03-22T10:00", "status": "active" },
+          { "venue_id": "V2", "by": "V2 馆方", "at": "2026-04-28T10:00", "status": "active" }
+        ],
+        "cleaning_interval_min": 30,
+        "max_group_size": 6,
+        "supervision_required": true,
+        "status": "active",
+        "revoked_event_id": null
+      },
+      {
+        "id": "AU-002",
+        "artwork_id": "W-002",
+        "artist_consent": { "by": "A-02", "at": "2026-03-20T10:00", "scope_zones": ["上部弧面"] },
+        "venue_consents": [
+          { "venue_id": "V1", "by": "V1 馆方", "at": "2026-03-22T10:00", "status": "active" }
+        ],
+        "cleaning_interval_min": 20,
+        "max_group_size": 4,
+        "supervision_required": true,
+        "status": "revoked",
+        "revoked_event_id": "EV-5"
+      },
+      {
+        "id": "AU-003",
+        "artwork_id": "W-003",
+        "artist_consent": null,
+        "venue_consents": [
+          { "venue_id": "V1", "by": "V1 馆方", "at": "2026-03-22T10:00", "status": "pending" }
+        ],
+        "cleaning_interval_min": 30,
+        "max_group_size": 4,
+        "supervision_required": true,
+        "status": "active",
+        "revoked_event_id": null
+      },
+      {
+        "id": "AU-004",
+        "artwork_id": "W-006",
+        "artist_consent": { "by": "A-06", "at": "2026-05-26T10:00", "scope_zones": ["外表面"] },
+        "venue_consents": [
+          { "venue_id": "V3", "by": "V3 馆方", "at": "2026-05-20T10:00", "status": "refused" },
+          { "venue_id": "V4", "by": "V4 馆方", "at": "2026-05-29T10:00", "status": "active" }
+        ],
+        "cleaning_interval_min": 40,
+        "max_group_size": 5,
+        "supervision_required": true,
+        "status": "active",
+        "revoked_event_id": null
+      }
+    ],
+    "sessions": [
+      {
+        "id": "T1",
+        "venue_id": "V1",
+        "starts_at": "2026-04-12T10:00",
+        "status": "held",
+        "planned_artwork_ids": ["W-001"],
+        "supports": ["口头导览", "触觉地图"],
+        "capacity": 8,
+        "held_groups": [
+          { "at": "2026-04-12T10:05", "visitors": 6, "cleaned_at": "2026-04-12T10:00", "supervision": true },
+          { "at": "2026-04-12T10:40", "visitors": 5, "cleaned_at": "2026-04-12T10:38", "supervision": true }
+        ],
+        "booking_ids": ["B1"]
+      },
+      {
+        "id": "T2",
+        "venue_id": "V2",
+        "starts_at": "2026-05-16T14:00",
+        "status": "postponed",
+        "planned_artwork_ids": ["W-001"],
+        "supports": ["口头导览"],
+        "capacity": 6,
+        "held_groups": [],
+        "booking_ids": ["B3"]
+      },
+      {
+        "id": "T3",
+        "venue_id": "V4",
+        "starts_at": "2026-06-07T10:00",
+        "status": "venue_pending",
+        "planned_artwork_ids": ["W-006"],
+        "supports": ["口头导览", "手语翻译", "轮椅通道"],
+        "capacity": 6,
+        "held_groups": [],
+        "booking_ids": ["B2"]
+      }
+    ],
+    "bookings": [
+      { "id": "B1", "session_id": "T1", "visitor_kind": "视障观众", "companions": 1, "needs": ["触觉地图"], "status": "fulfilled" },
+      { "id": "B2", "session_id": "T3", "visitor_kind": "听障观众", "companions": 1, "needs": ["轮椅通道", "手语翻译"], "status": "reserved" },
+      { "id": "B3", "session_id": "T2", "visitor_kind": "视障观众", "companions": 0, "needs": ["口头导览"], "status": "cancelled" }
+    ],
+    "events": [
+      {
+        "id": "EV-1",
+        "type": "repair",
+        "at": "2026-05-10T18:35",
+        "ref": "W-004",
+        "summary": "拆箱发现侧面裂纹，修复前不得悬挂展出",
+        "payload": { "report_id": "CR-005" },
+        "cascade": [
+          { "action": "artwork_hold", "ref": "W-004", "detail": "状态置为 repair_hold" },
+          { "action": "shipment_replan", "ref": "S2", "detail": "K3 随原车待命，修复后另排运段" },
+          { "action": "handover_reschedule", "ref": "H2", "detail": "V2 交接改至 2026-05-12T10:00" }
+        ]
+      },
+      {
+        "id": "EV-2",
+        "type": "missing_component",
+        "at": "2026-05-10T18:45",
+        "ref": "C-005-2",
+        "summary": "《群像组》必备侧像缺失，组像不得布展",
+        "payload": { "artwork_id": "W-005" },
+        "cascade": [
+          { "action": "artwork_partial", "ref": "W-005", "detail": "状态置为 partial，P-105 不予上件" },
+          { "action": "shipment_replan", "ref": "S2", "detail": "K4 到馆后封存待补件" }
+        ]
+      },
+      {
+        "id": "EV-3",
+        "type": "route_delay",
+        "at": "2026-05-10T20:00",
+        "ref": "S2",
+        "summary": "高速封路，S2 预计延误一天",
+        "payload": { "delay_hours": 24 },
+        "cascade": [
+          { "action": "shipment_delayed", "ref": "S2", "detail": "状态置为 delayed" },
+          { "action": "handover_reschedule", "ref": "H2", "detail": "交接顺延至 2026-05-12T10:00" },
+          { "action": "session_postpone", "ref": "T2", "detail": "V2 触摸场次延期，B3 取消并通知重约" }
+        ]
+      },
+      {
+        "id": "EV-4",
+        "type": "venue_change",
+        "at": "2026-05-28T12:00",
+        "ref": "V3",
+        "summary": "西区艺术空间因场地维修退出巡展，由东岸当代馆 V4 接替",
+        "payload": { "replacement_venue_id": "V4" },
+        "cascade": [
+          { "action": "venue_withdrawn", "ref": "V3", "detail": "场馆状态置为 withdrawn，P-201 释放" },
+          { "action": "shipment_reroute", "ref": "S3", "detail": "目的地由 V3 改为 V4" },
+          { "action": "position_reassign", "ref": "W-006", "detail": "改陈至 V4 的 P-301" },
+          { "action": "handover_reschedule", "ref": "H3", "detail": "交接改为 V4 馆方" },
+          { "action": "session_relocate", "ref": "T3", "detail": "场次移至 V4，待馆方二次确认" }
+        ]
+      },
+      {
+        "id": "EV-5",
+        "type": "authorization_withdrawn",
+        "at": "2026-04-20T09:00",
+        "ref": "AU-002",
+        "summary": "作者撤回《风的形状》触摸授权，全部场馆立即停止触摸开放",
+        "payload": { "artwork_id": "W-002", "by": "A-02" },
+        "cascade": [
+          { "action": "authorization_revoke", "ref": "AU-002", "detail": "授权置为 revoked" },
+          { "action": "session_remove_artwork", "ref": "T1", "detail": "已排触摸作品中剔除 W-002" }
+        ]
+      },
+      {
+        "id": "EV-6",
+        "type": "support_change",
+        "at": "2026-06-02T15:00",
+        "ref": "B2",
+        "summary": "预约观众新增手语翻译需求",
+        "payload": { "add_needs": ["手语翻译"] },
+        "cascade": [
+          { "action": "booking_update_needs", "ref": "B2", "detail": "需求增加手语翻译" },
+          { "action": "session_add_support", "ref": "T3", "detail": "场次辅助讲解增配手语翻译" }
+        ]
+      }
+    ]
+  }
 }
